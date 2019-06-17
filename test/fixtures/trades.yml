@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  offered_amount: 1.5
+  offered_wallet_id: 1
+  requested_amount: 1.5
+  requested_wallet_id: 1
+  complete?: false
+
+two:
+  offered_amount: 1.5
+  offered_wallet_id: 1
+  requested_amount: 1.5
+  requested_wallet_id: 1
+  complete?: false
