@@ -1,5 +1,6 @@
 <h1>Currencies#new</h1>
 
+<%= render partial: "shared/error_list", locals: {object: @currency} %>
 <%= form_for @currency do |f| %>
     <%= f.label :name, "Currency Name:" %>
     <%= f.text_field :name %>
