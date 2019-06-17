@@ -1,2 +1,6 @@
 <h1>Currencies#index</h1>
-<p>Find me in app/views/currencies/index.html.erb</p>
+
+<% @currencies.each do |currency| %>
+    <h2><%= link_to currency.name, currency %></h2>
+    <h3><%= currency.symbol %></h3>
+<% end %>
