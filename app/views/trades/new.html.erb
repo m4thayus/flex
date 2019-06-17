@@ -2,13 +2,12 @@
 
 <%= render partial: "shared/error_list", locals: {object: @trade} %>
 
-
 <%= form_for @trade do |f| %>
     <%= f.label :offered_amount, "Offer:" %>
     <%= f.number_field :offered_amount %>
-    <%= f.collection_select(:offered_wallet_id, Wallet.all, :id, :id, prompt: "Currency") %>
+    <%= f.collection_select(:offered_wallet_id, @user.wallets, :id, :id, prompt: "Currency") %>
     <%= f.label :requested_amount, "Request:" %>
     <%= f.number_field :requested_amount %>
-    <%= f.collection_select(:requested_wallet_id, Wallet.all, :id, :id, prompt: "Currency") %>
+    <%= f.collection_select(:requested_wallet_id, @user.wallets, :id, :id, prompt: "Currency") %>
     <%= f.submit %>
 <% end %>
