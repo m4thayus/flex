@@ -11,8 +11,8 @@ Currency.destroy_all
 Wallet.destroy_all
 Trade.destroy_all
 
-matt = User.create(name: "Matt")
-errol = User.create(name: "Errol")
+matt = User.create(name: "Matt", username: "m4thayus")
+errol = User.create(name: "Errol", username: "erroltrades")
 
 bitcoin = Currency.create(name: "Bitcoin", symbol: "BTC")
 dollar = Currency.create(name: "United States Dollar", symbol: "USD")
