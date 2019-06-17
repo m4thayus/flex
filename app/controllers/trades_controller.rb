@@ -10,11 +10,13 @@ class TradesController < ApplicationController
     
     def new
         @trade = Trade.new
+        @user = get_current_user
+        @wallets = @user.wallets
     end
     
     def create
         @trade = Trade.new(
-            trade_params(:offered_amount, :offered_wallet_id)
+            trade_params(:offered_amount, :offered_wallet_id, :requested_amount, :requested_wallet_id, complete?: false)
         )
         if @trade.valid?
             @trade.save

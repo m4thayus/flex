@@ -6,9 +6,9 @@
 <%= form_for @trade do |f| %>
     <%= f.label :offered_amount, "Offer:" %>
     <%= f.number_field :offered_amount %>
-    <%= collection_select(:wallet, :currency_id, Currency.all, :id, :symbol, prompt: "Currency") %>
+    <%= collection_select(@wallets, :currency_id, Currency.all, :id, :symbol, prompt: "Currency") %>
     <%= f.label :requested_amount, "Request:" %>
     <%= f.number_field :requested_amount %>
-    <%= collection_select(:wallet, :currency_id, Currency.all, :id, :symbol, prompt: "Currency") %>
+    <%= collection_select(@wallets, :currency_id, Currency.all, :id, :symbol, prompt: "Currency") %>
     <%= f.submit %>
 <% end %>
