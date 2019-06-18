@@ -18,6 +18,7 @@ class CurrenciesController < ApplicationController
         )
         if @currency.valid?
             @currency.save
+            @currency.image.attach(params[:currency][:image])
             redirect_to @currency
         else
             render :new
@@ -30,7 +31,8 @@ class CurrenciesController < ApplicationController
     def update
         if @currency.valid?
             @currency.update(
-                currency_params(:name, :symbol)
+                currency_params(:name, :symbol, :image)
+                #added image to params here...
             )
             redirect_to @currency
         else
