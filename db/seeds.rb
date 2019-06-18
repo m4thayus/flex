@@ -23,6 +23,6 @@ matt_usd_wallet = Wallet.create(user_id: matt.id, currency_id: dollar.id, amount
 errol_usd_wallet = Wallet.create(user_id: errol.id, currency_id: dollar.id, amount: 0)
 
 
-trade1 = Trade.create!(offered_amount: 2, offered_wallet_id: errol_btc_wallet.id, requested_amount: 2000, requested_wallet_id: errol_usd_wallet.id, complete?: false)
+# trade1 = Trade.create!(offered_amount: 2, offered_wallet_id: errol_btc_wallet.id, requested_amount: 2000, requested_wallet_id: errol_usd_wallet.id, completed: false)
 
-trade2 = Trade.create!(offered_amount: 2000, offered_wallet_id: matt_usd_wallet.id, requested_amount: 2, requested_wallet_id: matt_btc_wallet.id, complete?: false)
+trade2 = Trade.create!(offered_amount: 2000, offered_wallet_id: matt_usd_wallet.id, requested_amount: 2, requested_wallet_id: matt_btc_wallet.id, completed: false)

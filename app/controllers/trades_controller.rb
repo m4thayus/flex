@@ -15,9 +15,12 @@ class TradesController < ApplicationController
     
     def create
         @trade = Trade.new(
-            trade_params(:offered_amount, :offered_wallet_id, :requested_amount, :requested_wallet_id, complete?: false)
+            trade_params(:offered_amount, :offered_wallet_id, :requested_amount, :requested_wallet_id)
         )
         if @trade.valid?
+            @trade.completed = false
+            offered_amount = @trade.offered_amount
+             @trade.offered_wallet.credit(offered_amount)
             @trade.save
             matching_trade?
             redirect_to @trade
@@ -57,9 +60,13 @@ class TradesController < ApplicationController
         
         def matching_trade?
           Trade.all.each do |t|
-            if match?(t, @trade)
+            if !t.completed && match?(t, @trade)
               t.requested_wallet.debit(@trade.offered_amount)
               @trade.requested_wallet.debit(t.offered_amount)
+              t.completed = true
+              @trade.completed = true
+              t.save
+              @trade.save
             else
               nil
             end
