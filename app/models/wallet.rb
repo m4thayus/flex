@@ -6,4 +6,14 @@ class Wallet < ApplicationRecord
     def currency_symbol
       self.currency.symbol
     end
+    
+    def credit(amount)
+      self.amount -= amount
+      self.save
+    end
+    
+    def debit(amount)
+      self.amount += amount
+      self.save
+    end
 end

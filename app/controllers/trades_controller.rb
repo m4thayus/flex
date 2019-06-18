@@ -20,6 +20,7 @@ class TradesController < ApplicationController
         )
         if @trade.valid?
             @trade.save
+            
             redirect_to @trade
         else
             render :new
@@ -53,6 +54,17 @@ class TradesController < ApplicationController
     
         def trade_params(*args)
             params.require(:trade).permit(*args)
+        end
+        
+        def matching_trade?
+          Trade.all.each do |t|
+            if t.currency == @trade.currency && t.requested_amount == @trade.offered_amount 
+              
+              t.wallet.debit(@trade.offered_amount)
+              @trade.wallet.debit(t.offered_amount)
+            else
+              nil
+            end
         end
     
 end
