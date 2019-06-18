@@ -1,7 +1,7 @@
 class Wallet < ApplicationRecord
     belongs_to :user
     belongs_to :currency
-    has_many :trades
+    has_many :trades, foreign_key: "offered_wallet_id"
     
     def currency_symbol
       self.currency.symbol
