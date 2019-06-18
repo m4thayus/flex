@@ -19,7 +19,7 @@ class TradesController < ApplicationController
         )
         if @trade.valid?
             @trade.save
-            
+            matching_trade?
             redirect_to @trade
         else
             render :new
@@ -58,8 +58,8 @@ class TradesController < ApplicationController
         def matching_trade?
           Trade.all.each do |t|
             if match?(t, @trade)
-              t.wallet.debit(@trade.offered_amount)
-              @trade.wallet.debit(t.offered_amount)
+              t.requested_wallet.debit(@trade.offered_amount)
+              @trade.requested_wallet.debit(t.offered_amount)
             else
               nil
             end
@@ -68,7 +68,7 @@ class TradesController < ApplicationController
         
         def match?(trade, new_trade)
           new_trade.offered_currency == trade.requested_currency && new_trade.offered_amount == trade.requested_amount && new_trade.requested_currency == trade.offered_currency &&
-          new_trade.requested.amount == trade.offered_amount
+          new_trade.requested_amount == trade.offered_amount
         end
     
 end
