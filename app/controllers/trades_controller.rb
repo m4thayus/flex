@@ -74,7 +74,7 @@ class TradesController < ApplicationController
         end
         
         def match?(trade, new_trade)
-          new_trade.offered_currency == trade.requested_currency && new_trade.offered_amount == trade.requested_amount && new_trade.requested_currency == trade.offered_currency &&
+          new_trade.offered_currency == trade.requested_currency && new_trade.offered_amount >= trade.requested_amount && new_trade.requested_currency == trade.offered_currency &&
           new_trade.requested_amount == trade.offered_amount
         end
     
