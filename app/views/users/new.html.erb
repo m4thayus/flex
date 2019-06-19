@@ -1,4 +1,5 @@
-<h1>Users#new</h1>
+<h1> Create Account or <%= link_to "Login", login_path %></h1>
 
 <%= render partial: "shared/error_list", locals: {object: @user} %>
+
 <%= render "user_form" %>

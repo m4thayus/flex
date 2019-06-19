@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     before_action :find_user, only: [:show, :edit, :update, :destroy]
-    before_action :authorized
+    before_action :authorized, except: [:new, :create]
     
     def show
         @user = get_current_user
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     
     def create
         @user = User.new(
-            user_params(:name)
+            user_params(:name, :username)
         )
         if @user.valid?
             @user.save
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     def update
         if @user.valid?
             @user.update(
-                user_params(:name)
+                user_params(:name, :username)
             )
             redirect_to @user
         else

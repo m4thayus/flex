@@ -1,4 +1,4 @@
-<%= render partial: "shared/error_list", locals: {object: @user} %>
+<h1> Login or <%= link_to "Create Account", new_user_path %></h1>
 
 <%= form_tag "login", method: "post" do %>
     <%= label :username, "Username" %>
