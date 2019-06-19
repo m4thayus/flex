@@ -34,7 +34,7 @@ class TradesController < ApplicationController
         refund = @trade.offered_amount
         @trade.offered_wallet.debit(refund)
         @trade.destroy
-        redirect_to user_path
+        redirect_to trades_path
     end
     
     private
