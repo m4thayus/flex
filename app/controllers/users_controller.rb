@@ -12,8 +12,9 @@ class UsersController < ApplicationController
     
     def create
         @user = User.new(
-            user_params(:name, :username)
+            user_params(:name, :username, :password)
         )
+        @user.admin = false
         if @user.valid?
             @user.save
             redirect_to @user
@@ -28,7 +29,7 @@ class UsersController < ApplicationController
     def update
         if @user.valid?
             @user.update(
-                user_params(:name, :username)
+                user_params(:name, :username, :password)
             )
             redirect_to @user
         else

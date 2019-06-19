@@ -1,6 +1,6 @@
 class CurrenciesController < ApplicationController
     before_action :find_currency, only: [:show, :edit, :update, :destroy]
-    before_action :authorized, except: [:index, :show]
+    before_action :authorized_admin, except: [:index, :show]
     
     def index
         @currencies = Currency.all

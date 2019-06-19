@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    helper_method :get_current_user, :get_current_username
+    helper_method :get_current_user
 
     def get_current_user
         if @current_user
@@ -9,10 +9,10 @@ class ApplicationController < ActionController::Base
         end
     end
 
-    def get_current_username
+    def admin?
         user = get_current_user
         if user
-            return user.username
+            return user.admin
         end
     end
 
@@ -22,5 +22,9 @@ class ApplicationController < ActionController::Base
 
     def authorized
         redirect_to login_path unless logged_in?
+    end
+    
+    def authorized_admin
+        redirect_to login_path unless admin?
     end
 end
