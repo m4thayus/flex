@@ -30,20 +30,6 @@ class TradesController < ApplicationController
         end
     end
     
-    def edit
-    end
-    
-    def update
-        if @trade.valid?
-            @trade.update(
-                trade_params(:offered_amount, :offered_wallet_id)
-            )
-            redirect_to @trade
-        else
-            render :edit
-        end
-    end
-    
     def destroy
         @trade.destroy
         redirect_to trades_path

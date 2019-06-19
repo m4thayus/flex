@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-    resources :users
-    resources :wallets, :currencies, :trades, only: [:index, :show, :new, :create]
+    resources :currencies
+    resources :users, except: :index
+    resources :wallets, :trades, except: [:edit, :update]
     get "/login", to: "sessions#new", as: "login"
     post "/login", to: "sessions#create"
     delete "/logout", to: "sessions#destroy"
