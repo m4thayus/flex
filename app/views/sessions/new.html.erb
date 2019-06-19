@@ -1,3 +1,4 @@
+<%= render partial: "shared/error_list", locals: {object: @user} %>
 
 <%= form_tag "login", method: "post" do %>
     <%= label :username, "Username" %>
