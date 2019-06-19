@@ -1,3 +1,9 @@
-<h1>Wallets#show</h1>
+<h1>Wallet Detail View</h1>
 
-<h2><%= @wallet.amount %> <%= link_to @wallet.currency.symbol, @wallet.currency %></h2>
+<% if @wallet.currency.image.attached? %>
+    <%= image_tag @currency.image %>
+<% end %>
+
+
+<h2>This wallet contains:</h2>
+<p><%= @wallet.amount %> <%= link_to @wallet.currency.symbol, @wallet.currency %></p>

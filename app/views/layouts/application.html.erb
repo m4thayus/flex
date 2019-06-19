@@ -10,22 +10,17 @@
   </head>
 
   <body>
-    <% if get_current_user %>
-        <div>Welcome, <%= get_current_user.name %>!</div>
-        <%= link_to "Logout", "/logout", method: "DELETE" %>
-    <% else %>
-        <%= link_to "Login", login_path %>
-    <% end %>
-
-    <%# <form style="position: fixed; top: 2em; right: 2em;" action="/login" method="get">
-        <input type="submit" value="Log In">
-    </form
-    
-    <form style="position: fixed; top: 10em; right: 2em;" action="/logout" method="post">
-        <input id="hidden" type="hidden" name="_method" value="DELETE">
-        <input type="submit" value="Log Out">
-    </form> %>
-
+    <nav>
+        <%= link_to "Currencies", currencies_path %>
+        <%= link_to "Trades", trades_path %>
+        <%= link_to "Your Wallets", wallets_path %>
+        <% if get_current_user %>
+            <div>Welcome, <%= get_current_user.name %>!</div>
+            <%= link_to "Logout", "/logout", method: "DELETE" %>
+        <% else %>
+            <%= link_to "Login", login_path %>
+        <% end %>
+    </nav>
     <%= yield %>
   </body>
 </html>

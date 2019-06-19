@@ -1,4 +1,7 @@
-<h1><%= @currency.name %></h1>
-<h2><%= @currency.symbol %></h2>
+<h1><%= @currency.name %> (<%= @currency.symbol %>)</h1>
 
-<%= image_tag @currency.image %>
+<% if @currency.image.attached? %>
+    <%= image_tag @currency.image %>
+<% end %>
+
+<h2>Graph Placeholder</h2>

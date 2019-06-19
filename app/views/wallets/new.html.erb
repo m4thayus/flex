@@ -1,2 +1,10 @@
-<h1>Wallets#new</h1>
+<h1>Deposit Funds</h1>
+
+<%= form_for @wallet do |f| %>
+    <%= f.label :amount, "Amount to Deposit:" %>
+    <%= f.number_field :amount %>
+    <%= f.label :currency_id %>
+    <%= f.collection_select(:currency_id, Currency.all, :id, :symbol, prompt: "Currency") %>
+    <%= f.submit %>
+<% end %>
 

@@ -1,5 +1,8 @@
-<h1>Trades#index</h1>
+<h1>Pending Trades</h1>
 
 <% @trades.each do |trade| %>
-    <h2><%= trade.offered_amount %> <=> <%= trade.requested_amount %></h2>
+    <% unless trade.completed %>
+        <h2><%= trade.offered_amount %> <%= trade.offered_currency.symbol %> for <%= trade.requested_amount %> <%= trade.requested_currency.symbol %></h2>
+        <p><%= link_to "Link Placeholder", trade %></p>
+    <% end %>
 <% end %>

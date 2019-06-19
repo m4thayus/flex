@@ -1,2 +1,5 @@
-<h1>Trades#show</h1>
-<p>Find me in app/views/trades/show.html.erb</p>
+<h1>Detail View</h1>
+<% if @trade.offered_currency.image.attached? %>
+    <%= image_tag @currency.image %>
+<% end %>
+<h2><%= @trade.offered_amount %> <%= @trade.offered_currency.symbol %> for <%= @trade.requested_amount %> <%= @trade.requested_currency.symbol %></h2>

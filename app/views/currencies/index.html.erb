@@ -1,6 +1,6 @@
-<h1>Currencies#index</h1>
+<h1>Currencies</h1>
 
 <% @currencies.each do |currency| %>
-    <h2><%= link_to currency.name, currency %></h2>
-    <h3><%= currency.symbol %></h3>
+    <h2><%= link_to currency.name, currency %> (<%= currency.symbol %>)</h2>
+    <h3> Image placeholder</h3>
 <% end %>
