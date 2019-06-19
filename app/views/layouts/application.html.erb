@@ -6,16 +6,18 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <nav>
-        <span class="nav-left">
+   <div class="container">
+    <nav class="navbar navbar-dark">
+        <span>
             <%= link_to "Currencies", currencies_path %>
             <%= link_to "Trades", trades_path %>
         </span>
-        <span class="nav-right">
+        <span>
             <% if get_current_user %>
                 Welcome, <%= get_current_user.name %>!
                 <%= link_to "Profile", get_current_user %>
@@ -27,5 +29,6 @@
         </span>
     </nav>
     <%= yield %>
+   </div>
   </body>
 </html>
