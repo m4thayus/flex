@@ -1,5 +1,30 @@
 <h1>Currencies</h1>
 
+<script type="text/javascript">
+  
+  document.addEventListener('DOMContentLoaded', apiFetch())
+
+  function apiFetch(){
+    fetch("https://api.coindesk.com/v1/bpi/currentprice/XBT.json")
+      .then(response => response.json())
+      .then(jsonData => currencyObj(jsonData)) 
+  };
+
+
+  function currencyObj(jsonData){
+    console.log(jsonData)
+  };
+
+</script>
+  
+<div id="api-title">
+  <p>Current Exchange Rate:</p>
+</div>
+  <div id="api-render">
+    <p>yeet</p>
+  </div>
+
+
 <% @currencies.each do |currency| %>
     <h2><%= link_to currency.name, currency %> (<%= currency.symbol %>)</h2>
     <h3> Image placeholder</h3>
