@@ -10,9 +10,9 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-   <div class="container">
-    <nav class="navbar navbar-dark">
+  <body class="bg-light">
+   <div class="container rounded-bottom" style="background-color: white; padding-bottom: 1rem">
+    <nav class="navbar navbar-light rounded-bottom" style="background-color: #d8dee9;">
         <span>
             <%= link_to "Currencies", currencies_path %>
             <%= link_to "Trades", trades_path %>
