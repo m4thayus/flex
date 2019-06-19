@@ -1,4 +1,9 @@
-<h1>Users#edit</h1>
+<h1>Edit Your Profile</h1>
 
 <%= render partial: "shared/error_list", locals: {object: @user} %>
 <%= render "user_form" %>
+
+<%= form_tag @user, method: "destroy" do %>
+    <%= submit_tag "Delete Your account" %>
+<% end %>
+

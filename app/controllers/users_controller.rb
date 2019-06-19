@@ -3,6 +3,7 @@ class UsersController < ApplicationController
     before_action :authorized
     
     def show
+        @user = get_current_user
     end
     
     def new
@@ -36,8 +37,10 @@ class UsersController < ApplicationController
     end
     
     def destroy
+        @user.wallets.trades.destroy
+        @user.wallets.destroy
         @user.destroy
-        redirect_to users_path
+        redirect_to login_path
     end
     
     private

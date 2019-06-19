@@ -1,9 +1,21 @@
-<h1>Wallet Detail View</h1>
+<h1><%= @wallet.user.name %>'s <%= @wallet.currency.name %> Wallet</h1>
 
 <% if @wallet.currency.image.attached? %>
     <%= image_tag @currency.image %>
 <% end %>
 
 
-<h2>This wallet contains:</h2>
+<h2>Current Balance:</h2>
 <p><%= @wallet.amount %> <%= link_to @wallet.currency.symbol, @wallet.currency %></p>
+
+<h2>Pending Trades From This Wallet:</h2>
+<ul>
+    <% @wallet.trades.each do |trade|%>
+        <li>
+            <%= trade.offered_amount %> <%= trade.offered_currency.symbol %> for <%= trade.requested_amount %> <%= trade.requested_currency.symbol %> 
+            <%= render partial: "shared/delete_button", locals: {object: trade} %>
+        </li>
+    <% end %>
+</ul>
+
+<%= render partial: "shared/delete_button", locals: {object: @wallet} %>

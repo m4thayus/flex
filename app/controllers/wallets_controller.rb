@@ -26,6 +26,7 @@ class WalletsController < ApplicationController
     end
     
     def destroy
+        @wallet.trades.destroy
         @wallet.destroy
         redirect_to wallets_path
     end
