@@ -14,9 +14,11 @@ class WalletsController < ApplicationController
     end
     
     def create
+        @user = get_current_user
         @wallet = Wallet.new(
-            wallet_params(:user_id, :currency_id, :amount)
+            wallet_params(:currency_id, :amount)
         )
+        @wallet.user = @user
         if @wallet.valid?
             @wallet.save
             redirect_to @wallet
@@ -26,7 +28,6 @@ class WalletsController < ApplicationController
     end
     
     def destroy
-        @wallet.trades.destroy
         @wallet.destroy
         redirect_to wallets_path
     end

@@ -37,8 +37,6 @@ class UsersController < ApplicationController
     end
     
     def destroy
-        @user.wallets.trades.destroy
-        @user.wallets.destroy
         @user.destroy
         redirect_to login_path
     end
