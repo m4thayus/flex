@@ -1,5 +1,5 @@
 class TradesController < ApplicationController
-    before_action :find_trade, only: [:show, :edit, :update, :destroy]
+    before_action :find_trade, only: [:show, :destroy]
     before_action :authorized, except: [:index, :show]
     
     def index
@@ -31,10 +31,16 @@ class TradesController < ApplicationController
     end
     
     def destroy
-        refund = @trade.offered_amount
-        @trade.offered_wallet.debit(refund)
-        @trade.destroy
-        redirect_to trades_path
+        if get_current_user.trades.include?(@trade)
+            refund = @trade.offered_amount
+            @trade.offered_wallet.debit(refund)
+            @trade.destroy
+            redirect_to trades_path
+            return
+        else 
+            redirect_to login_path
+            return
+        end
     end
     
     private

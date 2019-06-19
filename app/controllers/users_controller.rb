@@ -3,7 +3,6 @@ class UsersController < ApplicationController
     before_action :authorized, except: [:new, :create]
     
     def show
-        @user = get_current_user
     end
     
     def new
@@ -45,7 +44,7 @@ class UsersController < ApplicationController
     private
     
         def find_user
-            @user = User.find(params[:id])
+            @user = get_current_user
         end
     
         def user_params(*args)

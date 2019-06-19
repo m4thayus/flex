@@ -1,5 +1,5 @@
 class WalletsController < ApplicationController
-    before_action :find_wallet, only: [:show, :edit, :update, :destroy]
+    before_action :find_wallet, only: [:show, :destroy]
     before_action :authorized
 
     def index
@@ -36,6 +36,12 @@ class WalletsController < ApplicationController
     
         def find_wallet
             @wallet = Wallet.find(params[:id])
+            if get_current_user.wallets.include?(@wallet)
+                @wallet
+            else
+                @wallet = nil
+                redirect_to login_path
+            end
         end
     
         def wallet_params(*args)
