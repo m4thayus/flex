@@ -1,8 +1,9 @@
 class WalletsController < ApplicationController
     before_action :find_wallet, only: [:show, :edit, :update, :destroy]
-    
+    before_action :authorized
+
     def index
-        @wallets = Wallet.all
+        @wallets = get_current_user.wallets
     end
     
     def show

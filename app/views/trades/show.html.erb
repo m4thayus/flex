@@ -3,3 +3,5 @@
     <%= image_tag @currency.image %>
 <% end %>
 <h2><%= @trade.offered_amount %> <%= @trade.offered_currency.symbol %> for <%= @trade.requested_amount %> <%= @trade.requested_currency.symbol %></h2>
+
+<%= render "make_trade_button" %>

@@ -1,6 +1,10 @@
 <h1>Your Wallets</h1>
-<ul>
-    <% @wallets.each do |wallet| %>
-        <li><%= link_to "#{wallet.user.name}'s #{wallet.currency.symbol}", wallet %></li>
-    <% end %>
-</ul>
+<% if get_current_user %>
+    <ul>
+        <% @wallets.each do |wallet| %>
+            <li><%= link_to "#{wallet.user.name}'s #{wallet.currency.symbol}", wallet %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<%= render "add_wallet_button" %>

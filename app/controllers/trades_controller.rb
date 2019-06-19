@@ -1,5 +1,6 @@
 class TradesController < ApplicationController
     before_action :find_trade, only: [:show, :edit, :update, :destroy]
+    before_action :authorized, except: [:index, :show]
     
     def index
         @trades = Trade.all

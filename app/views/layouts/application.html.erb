@@ -11,15 +11,19 @@
 
   <body>
     <nav>
-        <%= link_to "Currencies", currencies_path %>
-        <%= link_to "Trades", trades_path %>
-        <%= link_to "Your Wallets", wallets_path %>
-        <% if get_current_user %>
-            <div>Welcome, <%= get_current_user.name %>!</div>
-            <%= link_to "Logout", "/logout", method: "DELETE" %>
-        <% else %>
-            <%= link_to "Login", login_path %>
-        <% end %>
+        <span class="nav-left">
+            <%= link_to "Currencies", currencies_path %>
+            <%= link_to "Trades", trades_path %>
+        </span>
+        <span class="nav-right">
+            <% if get_current_user %>
+                Welcome, <%= get_current_user.name %>!
+                <%= link_to "Your Wallets", wallets_path %>
+                <%= link_to "Logout", "/logout", method: "DELETE" %>
+            <% else %>
+                <%= link_to "Login", login_path %>
+            <% end %>
+        </span>
     </nav>
     <%= yield %>
   </body>
