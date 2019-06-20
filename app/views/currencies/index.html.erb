@@ -30,9 +30,13 @@
 
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
-    <% @currencies.each do |currency| %>
+    <% @currencies.each_with_index do |currency, index| %>
         <h2><%= link_to currency.name, currency %> (<%= currency.symbol %>)</h2>
-    <div class="carousel-item active">
+    <% if index = 0 %>
+        <div class="carousel-item active">
+    <% else %>
+        <div class="carousel-item">
+    <% end %>
         <% if currency.image.attached? %>
             <%= image_tag currency.image, class: "d-block w-100", style: "height: 10rem;" %>
         <% end %>
