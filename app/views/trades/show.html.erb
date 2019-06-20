@@ -1,6 +1,6 @@
 <h1>Detail View</h1>
 <% if @trade.offered_currency.image.attached? %>
-    <%= image_tag @currency.image %>
+    <%= image_tag @trade.offered_currency.image %>
 <% end %>
 <h2><%= @trade.offered_amount %> <%= @trade.offered_currency.symbol %> for <%= @trade.requested_amount %> <%= @trade.requested_currency.symbol %></h2>
 

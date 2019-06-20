@@ -1,10 +1,27 @@
 <h1>Pending Trades</h1>
 
-<% @trades.each do |trade| %>
-    <% unless trade.completed %>
-        <h2><%= trade.offered_amount %> <%= trade.offered_currency.symbol %> for <%= trade.requested_amount %> <%= trade.requested_currency.symbol %></h2>
-        <p><%= link_to "Link Placeholder", trade %></p>
-    <% end %>
-<% end %>
+<div id="carouselConrols" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <% index = 0 %>
+        <% @trades.each do |trade| %>
+            <% unless trade.completed %>
+            <% if index == 0 %>
+                <div class="carousel-item active" data-interval="5000">
+                <% index += 1 %>
+            <% else %>
+                <div class="carousel-item" data-interval="5000">
+            <% end %>
+                <% if trade.offered_currency.image.attached? %>
+                    <%= image_tag trade.offered_currency.image, class: "d-block w-100", style: "height: 8rem; margin-bottom: 10rem;" %>
+                <% end %>
+                    <div class="carousel-caption d-none d-md-block" >
+                        <h2 style="color: black;"><%= trade.offered_amount %> <%= trade.offered_currency.symbol %> for <%= trade.requested_amount %> <%= trade.requested_currency.symbol %></h2>
+                        <p><%= link_to "Details", trade, style: "color: black;"%></p>
+                    </div>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+</div>
 
-<%= render "make_trade_button" %>
+        <%= render "make_trade_button" %>
