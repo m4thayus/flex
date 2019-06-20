@@ -6,19 +6,17 @@
 
   function apiFetch(){
     fetch("https://api.coindesk.com/v1/bpi/currentprice/XBT.json")
-      .then(response => response.json())
-      .then(jsonData => currencyObj(jsonData)) 
+      .then(res => res.json())
+      .then(jsonData => jsonData.forEach(currencyObj))
   };
 
 
   function currencyObj(jsonData){
+    console.log(jsonData)
     let apiContainer = document.getElementById("api-render")
     let apiDiv = document.createElement("div")
     apiDiv.innerText = jsonData
     apiContainer.appendChild(apiDiv)
-    console.log(
-      jsonData
-    )
   };
 
 </script>
@@ -33,5 +31,7 @@
 
 <% @currencies.each do |currency| %>
     <h2><%= link_to currency.name, currency %> (<%= currency.symbol %>)</h2>
-    <h3> Image placeholder</h3>
+    <% if currency.image.attached? %>
+        <%= image_tag currency.image, class: "rounded mx-auto d-block", style: "width: 6rem;" %>
+    <% end %>
 <% end %>

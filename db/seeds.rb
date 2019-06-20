@@ -17,6 +17,9 @@ errol = User.create!(name: "Errol", username: "erroltrades", admin: true, passwo
 bitcoin = Currency.create(name: "Bitcoin", symbol: "BTC")
 dollar = Currency.create(name: "United States Dollar", symbol: "USD")
 
+
+bitcoin.image.attach(io: File.open("currency_images/btc-brands.svg), filename: "btc.svg", content_type: "image/svg")
+
 errol_btc_wallet = Wallet.create(user_id: errol.id, currency_id: bitcoin.id, amount: 5)
 matt_btc_wallet = Wallet.create(user_id: matt.id, currency_id: bitcoin.id, amount: 0)
 matt_usd_wallet = Wallet.create(user_id: matt.id, currency_id: dollar.id, amount: 10000)

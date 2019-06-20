@@ -1,7 +1,5 @@
 <h1><%= @currency.name %> (<%= @currency.symbol %>)</h1>
 
 <% if @currency.image.attached? %>
-    <%= image_tag @currency.image %>
+    <%= image_tag @currency.image, class: "rounded mx-auto d-block", style: "width: 6rem;" %>
 <% end %>
-
-<h2>Graph Placeholder</h2>
