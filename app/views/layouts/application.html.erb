@@ -22,7 +22,7 @@
                 Welcome, <%= get_current_user.name %>!
                 <%= link_to "Profile", get_current_user %>
                 <%= link_to "Wallets", wallets_path %>
-                <%= link_to "Logout", "/logout", method: "DELETE" %>
+                <%= link_to "Logout", logout_path, method: "DELETE" %>
             <% else %>
                 <%= link_to "Login", login_path %>
             <% end %>

@@ -12,7 +12,13 @@
 
 
   function currencyObj(jsonData){
-    console.log(jsonData)
+    let apiContainer = document.getElementById("api-render")
+    let apiDiv = document.createElement("div")
+    apiDiv.innerText = jsonData
+    apiContainer.appendChild(apiDiv)
+    console.log(
+      jsonData
+    )
   };
 
 </script>
@@ -21,7 +27,7 @@
   <p>Current Exchange Rate:</p>
 </div>
   <div id="api-render">
-    <p>yeet</p>
+
   </div>
 
 
