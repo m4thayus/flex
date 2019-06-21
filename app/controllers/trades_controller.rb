@@ -24,7 +24,7 @@ class TradesController < ApplicationController
              @trade.offered_wallet.credit(offered_amount)
             @trade.save
             matching_trade?
-            redirect_to @trade
+            redirect_to trades_path
         else
             render :new
         end
