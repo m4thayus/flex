@@ -1,25 +1,4 @@
 <h1>Currencies</h1>
-
-<script type="text/javascript">
-  
-  document.addEventListener('DOMContentLoaded', apiFetch())
-
-  function apiFetch(){
-    fetch("https://api.coindesk.com/v1/bpi/currentprice/XBT.json")
-      .then(res => res.json())
-      .then(jsonData => jsonData.forEach(currencyObj))
-  };
-
-
-  function currencyObj(jsonData){
-    console.log(jsonData)
-    let apiContainer = document.getElementById("api-render")
-    let apiDiv = document.createElement("div")
-    apiDiv.innerText = jsonData
-    apiContainer.appendChild(apiDiv)
-  };
-
-</script>
   
 <div id="api-title">
 </div>

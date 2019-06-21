@@ -9,4 +9,12 @@
     <%= f.label :image, "Add Image" %>
     <%= f.file_field(:image) %>
     <%= f.submit %>
+    <script>
+      let symbolT = document.getElementById("currency_symbol").value
+      
+      fetch(`https://api.coindesk.com/v1/bpi/currentprice/${symbolT}.json`)
+        .then(res => res.json())
+        .then(jsonData => currencyObj(jsonData))
+      
+    </script>
 <% end %>

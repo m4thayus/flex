@@ -3,3 +3,43 @@
 <% if @currency.image.attached? %>
     <%= image_tag @currency.image, class: "rounded mx-auto d-block", style: "width: 6rem;" %>
 <% end %>
+
+<div id="symbol" style="color: white;"><%= @currency.symbol%>
+</div>
+
+<div id="rate-container" class="d-flex justify-content-center">
+  <script type="text/javascript">
+  
+    document.addEventListener('DOMContentLoaded',function(){
+      let symbolT = document.getElementById("symbol").innerText
+      apiFetch(symbolT)
+      
+    })
+  
+  // function findSymbolValue(){
+  //   let symbolT = document.getElementById("symbol")
+  // }
+  
+    function apiFetch(symbolT){
+      fetch(`https://api.coindesk.com/v1/bpi/currentprice/${symbolT}.json`)
+        .then(res => res.json())
+        .then(jsonData => currencyObj(jsonData,symbolT))
+    }
+
+    function currencyObj(jsonData,symbolT){
+      let apiContainer = document.getElementById("rate-container")
+      let apiDiv = document.createElement("div")
+      let rateObj = jsonData.bpi[symbolT].rate
+      apiDiv.innerText = rateObj
+      apiContainer.appendChild(apiDiv)
+
+    };
+
+  </script>
+</div>
+
+
+<!-- likeTile.dataset.boffo = document.getElementById("symbol")
+
+let yeet = document.querySelector(`[data-boffo = '${newLikeObj.id}']`)
+      yeet.innerText = (`Likes: ${newLikeObj.likes}`) -->
