@@ -7,14 +7,11 @@
 <div id="symbol" style="color: white;"><%= @currency.symbol%>
 </div>
 
-
-
 <div id="usd-container" class="d-flex justify-content-center">USD: $</div>
 
-<div id="rate-container" class="d-flex justify-content-center">rate:  (bitcoin)</div>
+<div id="rate-container" class="d-flex justify-content-center">Rate: ฿</div>
 
   <script type="text/javascript">
-  
     document.addEventListener('DOMContentLoaded',function(){
       let symbolT = document.getElementById("symbol").innerText
       apiFetch(symbolT)
@@ -44,7 +41,7 @@
       let usdConversion = Number(targetRateFloat/usdRateFloat).toFixed(5)
         apiUsdDiv.innerText = usdConversion
         apiUsdContainer.appendChild(apiUsdDiv) 
-
-        window.setTimeout(function(){ document.location.reload(true); }, 5000);
+        
+        window.setTimeout(function(){location.reload(true)}, 3000);
     };
   </script>
