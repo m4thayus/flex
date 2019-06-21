@@ -1,13 +1,15 @@
 <h1><%= @wallet.user.name %>'s <%= @wallet.currency.name %> Wallet</h1>
-
 <% if @wallet.currency.image.attached? %>
-    <%= image_tag @currency.image %>
+    <div class="d-flex justify-content-center">
+        <%= image_tag @wallet.currency.image, style: "height: 8rem;"%>
+    </div>
 <% end %>
 
 
 <h2>Current Balance:</h2>
 <p><%= @wallet.amount %> <%= link_to @wallet.currency.symbol, @wallet.currency %></p>
 
+<% unless @wallet.trades.empty? %>
 <h2>Pending Trades From This Wallet:</h2>
 <ul>
     <% @wallet.trades.each do |trade|%>
@@ -17,5 +19,5 @@
         </li>
     <% end %>
 </ul>
-
+<% end %>
 <%= render partial: "shared/delete_button", locals: {object: @wallet} %>
