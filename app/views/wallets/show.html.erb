@@ -1,3 +1,4 @@
+<meta http-equiv="refresh" content="5" >
 <h1><%= @wallet.user.name %>'s <%= @wallet.currency.name %> Wallet</h1>
 <% if @wallet.currency.image.attached? %>
     <div class="d-flex justify-content-center">
@@ -43,7 +44,6 @@
         apiUsdDiv.innerText = usdConversion
         apiUsdContainer.appendChild(apiUsdDiv) 
         
-        window.setTimeout(function(){location.reload(true)}, 3000);
     };
   </script>
   
@@ -56,7 +56,9 @@
     <% @wallet.trades.each do |trade|%>
         <li>
             <%= trade.offered_amount %> <%= trade.offered_currency.symbol %> for <%= trade.requested_amount %> <%= trade.requested_currency.symbol %> 
+            <div style="display: inline-block;">
             <%= render partial: "shared/delete_button", locals: {object: trade} %>
+            </div>
         </li>
     <% end %>
 </ul>

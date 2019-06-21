@@ -3,7 +3,8 @@
 <%= render partial: "shared/error_list", locals: {object: @user} %>
 <%= render "user_form" %>
 
+<div class="form-group">
 <%= form_tag @user, method: "delete" do %>
-    <%= submit_tag "Delete Your account" %>
+    <%= submit_tag "Delete Your account", class: "btn btn-danger"%>
 <% end %>
-
+</div>

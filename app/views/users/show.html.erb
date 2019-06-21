@@ -1,15 +1,26 @@
 <h1><%= @user.name %></h1>
 
+<% unless @user.trades.empty? %>
 <h2>Your Trades:</h2>
 <ul>
     <% @user.trades.each do |trade|%>
         <li>
             <%= trade.offered_amount %> <%= trade.offered_currency.symbol %> for <%= trade.requested_amount %> <%= trade.requested_currency.symbol %> 
+            <div style="display: inline-block;">
             <%= render partial: "shared/delete_button", locals: {object: trade} %>
+            </div>
         </li>
     <% end %>
 </ul>
-
+<% end %>
+<div class="form-group">
 <%= form_tag "#{@user.id}/edit", method: "get" do %>
-    <%= submit_tag "Edit Your Profile" %>
+    <%= submit_tag "Edit Your Profile", class: "btn btn-primary"%>
+<% end %>
+</div>
+
+<% if @user.admin? %>
+    <%= form_tag new_currency_path, method: "get" do %>
+        <%= submit_tag "Add a New Currency", class: "btn btn-success" %>
+    <% end %>
 <% end %>

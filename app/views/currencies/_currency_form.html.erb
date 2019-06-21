@@ -1,9 +1,17 @@
+<style> .form-group { margin-top: 2rem; }</style>
+
 <%= form_for @currency do |f| %>
+<div class="form-group">
     <%= f.label :name, "Currency Name:" %>
     <%= f.text_field :name %>
+</div>
+<div class="form-group">
     <%= f.label :symbol, "Abbreviation" %>
     <%= f.text_field :symbol %>
+</div>
+<div class="form-group">
     <%= f.label :image, "Add Image" %>
     <%= f.file_field(:image) %>
-    <%= f.submit %>
+</div>
+    <%= f.submit(class: "btn btn-primary")%>
 <% end %>

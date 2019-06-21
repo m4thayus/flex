@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    helper_method :get_current_user
+    helper_method :get_current_user, :logged_in?
     # protect_from_forgery prepend: true, with: :exception
     # 
     # protected

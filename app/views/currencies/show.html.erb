@@ -1,3 +1,4 @@
+<meta http-equiv="refresh" content="5" >
 <h1><%= @currency.name %> (<%= @currency.symbol %>)</h1>
 
 <% if @currency.image.attached? %>
@@ -42,6 +43,12 @@
         apiUsdDiv.innerText = usdConversion
         apiUsdContainer.appendChild(apiUsdDiv) 
         
-        window.setTimeout(function(){location.reload(true)}, 3000);
     };
   </script>
+
+
+<% if logged_in? && get_current_user.admin? %>
+    <%= form_tag "#{@currency.id}/edit", method: "get" do %>
+        <%= submit_tag "Edit This Currency", class: "btn btn-primary" %>
+    <% end %>
+<% end %>

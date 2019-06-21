@@ -1,13 +1,18 @@
+<style> .form-group { margin-top: 2rem; }</style>
 <h1>Deposit Funds</h1>
 
 <%= render partial: "shared/error_list", locals: {object: @wallet} %>
 
 
 <%= form_for @wallet do |f| %>
+<div class="form-group">
     <%= f.label :amount, "Amount to Deposit:" %>
     <%= f.number_field :amount %>
+</div>
+<div class="form-group">
     <%= f.label :currency_id %>
     <%= f.collection_select(:currency_id, Currency.all, :id, :symbol, prompt: "Currency") %>
-    <%= f.submit %>
+</div>
+    <%= f.submit(class: "btn btn-primary") %>
 <% end %>
 
