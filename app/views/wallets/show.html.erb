@@ -5,7 +5,44 @@
     </div>
 <% end %>
 
+<div id="symbol" style="color: white;"><%= @wallet.currency.symbol%>
+</div>
 
+<div id="usd-container" class="d-flex justify-content-center">USD:  </div>
+
+<div id="rate-container" class="d-flex justify-content-center">rate:  (bitcoin)</div>
+
+  <script type="text/javascript">
+  
+    document.addEventListener('DOMContentLoaded',function(){
+      let symbolT = document.getElementById("symbol").innerText
+      apiFetch(symbolT)
+    })
+
+    function apiFetch(symbolT){
+      fetch(`https://api.coindesk.com/v1/bpi/currentprice/${symbolT}.json`)
+        .then(res => res.json())
+        .then(jsonData => currencyObj(jsonData,symbolT))
+    }
+
+    function currencyObj(jsonData,symbolT){
+      let apiTargetContainer = document.getElementById("rate-container")
+      let apiTargetDiv = document.createElement("div")
+      let targetRate = jsonData.bpi[symbolT].rate
+        apiTargetDiv.innerText = targetRate
+        apiTargetContainer.appendChild(apiTargetDiv)
+      
+      let apiUsdContainer = document.getElementById("usd-container")
+      let apiUsdDiv = document.createElement("div")
+      let usdRate = jsonData.bpi.USD.rate
+        apiUsdDiv.innerText = usdRate
+        apiUsdContainer.appendChild(apiUsdDiv)  
+    };
+    window.setTimeout(function(){ document.location.reload(true); }, 5000);
+    
+    
+  </script>
+  
 <h2>Current Balance:</h2>
 <p><%= @wallet.amount %> <%= link_to @wallet.currency.symbol, @wallet.currency %></p>
 
